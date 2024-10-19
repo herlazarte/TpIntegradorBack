@@ -5,6 +5,7 @@ from apps.servicios.models import Servicio, TipoServicio, ProfesionalServicio
 @admin.register(Servicio)
 class AdminServicio(admin.ModelAdmin):
     pass
+
 @admin.register(TipoServicio)
 class AdminTipoServicio(admin.ModelAdmin):
     pass

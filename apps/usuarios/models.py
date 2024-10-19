@@ -22,6 +22,7 @@ class Cliente(models.Model):
     telefono=models.CharField(max_length=15)
     direccion=models.ForeignKey(Direccion, on_delete=models.CASCADE)
 
+
 class Profesional(models.Model):
     nombre=models.CharField(max_length=255)
     email=models.EmailField(unique=True)
