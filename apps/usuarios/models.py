@@ -15,13 +15,17 @@ class Direccion(models.Model):
     provincia=models.CharField(max_length=255)
     pais=models.CharField(max_length=255)
 
+    
+
 class Cliente(models.Model):
     nombre=models.CharField(max_length=255)
     email=models.EmailField(unique=True) #para que el email que se registre sea unico y no se repita 
     contra=models.CharField(max_length=255)#hacer logica para que tenga caracteres especiales,May.Min,Num
     telefono=models.CharField(max_length=15)
     direccion=models.ForeignKey(Direccion, on_delete=models.CASCADE)
-
+    
+    def __str__(self) -> str:
+        return f"{self.nombre}"
 
 class Profesional(models.Model):
     nombre=models.CharField(max_length=255)
@@ -29,6 +33,10 @@ class Profesional(models.Model):
     telefono=models.CharField(max_length=15)
     contra=models.CharField(max_length=255)
     direccion=models.ForeignKey(Direccion, on_delete=models.CASCADE)
+    servicio_profesional=models.ForeignKey('servicios.Servicio', on_delete=models.CASCADE)
+
+    def __str__(self) -> str:
+        return f"{self.nombre} {self.servicio_profesional}"
 
 
 
