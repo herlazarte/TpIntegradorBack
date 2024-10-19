@@ -3,10 +3,10 @@ from django.db import models
 # Create your models here.
 
 
-
+ #preguntar para despues consumir de una api
 class Direccion(models.Model):
-    latitud=models.FloatField()
-    longitud=models.FloatField()
+    # latitud=models.FloatField()
+    # longitud=models.FloatField()
     calle=models.CharField(max_length=255)
     numero=models.CharField(max_length=20)#preguntar
     piso=models.CharField(max_length=10,null=True,blank=True)#para que el campo no sea obligatorio
@@ -28,7 +28,6 @@ class Profesional(models.Model):
     telefono=models.CharField(max_length=15)
     contra=models.CharField(max_length=255)
     direccion=models.ForeignKey(Direccion, on_delete=models.CASCADE)
-
 
 
 

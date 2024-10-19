@@ -5,6 +5,7 @@ class Solicitud(models.Model):
     cliente=models.ForeignKey('usuarios.Cliente', on_delete=models.CASCADE)
     fecha_solicitud=models.DateTimeField(auto_now_add=True) #fecha y hora exactas cuando se crea la solicitud
 
+#consultar la logica de tabla intermedia
 class SolicitudServicio(models.Model):
     solicitud=models.ForeignKey(Solicitud, on_delete=models.CASCADE)
     profesional_servicio=models.ForeignKey('usuarios.Profesional', on_delete=models.CASCADE)
