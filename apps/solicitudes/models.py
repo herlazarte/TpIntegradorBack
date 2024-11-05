@@ -19,9 +19,14 @@ class SolicitudServicio(models.Model):
         return f"{self.solicitud} {self.profesional_servicio}"
 
 class Turno(models.Model):
+    ESTADOS_TURNOS = {
+        ('A','Aceptado'),
+        ('R','Rechazado'),
+        ('EN','En transcurso'),
+    }
     solicitud_servicio=models.ForeignKey(SolicitudServicio, on_delete=models.CASCADE)
     fecha_turno=models.DateTimeField()
-    estado_turno=models.CharField(max_length=50)#preguntar para que por prederetminado haya turno ya establecidos
+    estado_turno=models.CharField(max_length=3, choices=ESTADOS_TURNOS)#preguntar para que por prederetminado haya turno ya establecidos
 
     def __str__(self) -> str:
         return f"{self.solicitud_servicio} {self.fecha_turno} {self.estado_turno}"
