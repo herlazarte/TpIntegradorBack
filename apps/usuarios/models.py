@@ -15,6 +15,9 @@ class Direccion(models.Model):
     provincia=models.CharField(max_length=255)
     pais=models.CharField(max_length=255)
 
+    def __str__(self):
+        return f"{self.calle} {self.numero}"
+
     
 
 class Cliente(models.Model):
@@ -22,7 +25,7 @@ class Cliente(models.Model):
     email=models.EmailField(unique=True) #para que el email que se registre sea unico y no se repita 
     contra=models.CharField(max_length=255)#hacer logica para que tenga caracteres especiales,May.Min,Num
     telefono=models.CharField(max_length=15)
-    direccion=models.ForeignKey(Direccion, on_delete=models.CASCADE)
+    direccion=models.ManyToManyField(Direccion)
     
     def __str__(self) -> str:
         return f"{self.nombre}"
@@ -32,8 +35,8 @@ class Profesional(models.Model):
     email=models.EmailField(unique=True)
     telefono=models.CharField(max_length=15)
     contra=models.CharField(max_length=255)
-    direccion=models.ForeignKey(Direccion, on_delete=models.CASCADE)
-    servicio_profesional=models.ForeignKey('servicios.Servicio', on_delete=models.CASCADE)
+    direccion=models.ManyToManyField(Direccion)
+    servicio_profesional=models.ManyToManyField('servicios.Servicio')
 
     def __str__(self) -> str:
         return f"{self.nombre} {self.servicio_profesional}"
