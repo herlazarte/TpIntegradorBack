@@ -1,4 +1,5 @@
 from django.db import models
+from core.models import PersonaModelo
 
 # Create your models here.
 
@@ -20,26 +21,18 @@ class Direccion(models.Model):
 
     
 
-class Cliente(models.Model):
-    nombre=models.CharField(max_length=255)
-    email=models.EmailField(unique=True) #para que el email que se registre sea unico y no se repita 
-    contra=models.CharField(max_length=255)#hacer logica para que tenga caracteres especiales,May.Min,Num
-    telefono=models.CharField(max_length=15)
+class Cliente(PersonaModelo):
     direccion=models.ManyToManyField(Direccion)
     
     def __str__(self) -> str:
         return f"{self.nombre}"
 
-class Profesional(models.Model):
-    nombre=models.CharField(max_length=255)
-    email=models.EmailField(unique=True)
-    telefono=models.CharField(max_length=15)
-    contra=models.CharField(max_length=255)
+class Profesional(PersonaModelo):
     direccion=models.ManyToManyField(Direccion)
     servicio_profesional=models.ManyToManyField('servicios.Servicio')
 
     def __str__(self) -> str:
-        return f"{self.nombre} {self.servicio_profesional}"
+        return f"{self.nombre} - Servicios: {', '.join([str(s) for s in self.servicio_profesional.all()])}"
 
 
 
