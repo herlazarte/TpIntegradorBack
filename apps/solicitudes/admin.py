@@ -8,4 +8,4 @@ class AdminSolicitud(admin.ModelAdmin):
     list_display = ['cliente', 'tipo_servicio', 'profesional_servicio', 'fecha_solicita']
 @admin.register(Turno)
 class AdminTurno(admin.ModelAdmin):
-    pass
+    list_display = ['solicitud', 'fecha_Asignacion_Turno', 'estado_turno']

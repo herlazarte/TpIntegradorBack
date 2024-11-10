@@ -22,4 +22,4 @@ class Turno(models.Model):
     estado_turno=models.CharField(max_length=3, choices=ESTADOS_TURNOS)#preguntar para que por prederetminado haya turno ya establecidos
 
     def __str__(self) -> str:
-        return f"{self.fecha_turno} {self.estado_turno}"
+        return f"{self.fecha_Asignacion_Turno} {self.estado_turno}"
