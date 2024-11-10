@@ -2,7 +2,7 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView, CreateView
 
-from apps.usuarios.forms import ClienteForm
+from apps.usuarios.forms import ClienteForm, ProfesionalForm
 from .models import Cliente, Profesional
 
 
@@ -18,9 +18,14 @@ class AltaClientesView(CreateView):
     model = Cliente
     form_class = ClienteForm
     template_name = 'alta_cliente.html'
-    success_url = '/listado_clientes/'
+    success_url = '/alta_cliente/'
 
 
+class AltaProfesionalView(CreateView):
+    model = Profesional
+    form_class = ProfesionalForm
+    template_name = 'alta_profesional.html'
+    success_url = '/alta_profesional/'
 
 
 class ListaProfesionalesView(TemplateView):
