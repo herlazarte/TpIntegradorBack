@@ -1,22 +1,15 @@
 from django.db import models
+from django.utils import timezone
 
 # Create your models here.
 class Solicitud(models.Model):
     cliente=models.ForeignKey('usuarios.Cliente', on_delete=models.CASCADE)
-    #definir formato de la fecha
-    fecha_solicitud=models.DateTimeField() #fecha y hora exactas cuando se crea la solicitud
+    fecha_solicita=models.DateTimeField()
     tipo_servicio=models.ForeignKey('servicios.Servicio', on_delete=models.CASCADE)
+    profesional_servicio=models.ForeignKey('usuarios.Profesional', on_delete=models.CASCADE, default=None)
 
     def __str__(self) -> str:
-        return f"{self.cliente} {self.fecha_solicitud} {self.tipo_servicio}"
-
-#consultar la logica de tabla intermedia
-class SolicitudServicio(models.Model):
-    solicitud=models.ForeignKey(Solicitud, on_delete=models.CASCADE)
-    profesional_servicio=models.ForeignKey('usuarios.Profesional', on_delete=models.CASCADE)
-
-    def __str__(self) -> str:
-        return f"{self.solicitud} {self.profesional_servicio}"
+        return f"{self.cliente}"
 
 class Turno(models.Model):
     ESTADOS_TURNOS = {
@@ -24,9 +17,9 @@ class Turno(models.Model):
         ('R','Rechazado'),
         ('EN','En transcurso'),
     }
-    solicitud_servicio=models.ForeignKey(SolicitudServicio, on_delete=models.CASCADE)
-    fecha_turno=models.DateTimeField()
+    solicitud=models.ForeignKey(Solicitud, on_delete=models.CASCADE, default=None)
+    fecha_Asignacion_Turno=models.DateTimeField()
     estado_turno=models.CharField(max_length=3, choices=ESTADOS_TURNOS)#preguntar para que por prederetminado haya turno ya establecidos
 
     def __str__(self) -> str:
-        return f"{self.solicitud_servicio} {self.fecha_turno} {self.estado_turno}"
+        return f"{self.fecha_turno} {self.estado_turno}"

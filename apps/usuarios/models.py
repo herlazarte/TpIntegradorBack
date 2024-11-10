@@ -6,8 +6,6 @@ from core.models import PersonaModelo
 
  #preguntar para despues consumir de una api
 class Direccion(models.Model):
-    # latitud=models.FloatField()
-    # longitud=models.FloatField()
     calle=models.CharField(max_length=255)
     numero=models.CharField(max_length=20)#preguntar
     piso=models.CharField(max_length=10,null=True,blank=True)#para que el campo no sea obligatorio
@@ -22,17 +20,21 @@ class Direccion(models.Model):
     
 
 class Cliente(PersonaModelo):
-    direccion=models.ManyToManyField(Direccion)
+    direccion=models.ManyToManyField(Direccion,default=None) 
     
     def __str__(self) -> str:
         return f"{self.nombre}"
 
 class Profesional(PersonaModelo):
-    direccion=models.ManyToManyField(Direccion)
+    direccion=models.ManyToManyField(Direccion,default=None)
     servicio_profesional=models.ManyToManyField('servicios.Servicio')
 
     def __str__(self) -> str:
-        return f"{self.nombre} - Servicios: {', '.join([str(s) for s in self.servicio_profesional.all()])}"
+        return f"{self.nombre}" 
+    
+    #creo para manejar la lista ManyToMany y despues usaerlo en el admin
+    def Servicio(self):    
+        return ', '.join([str(s) for s in self.servicio_profesional.all()])
 
 
 
