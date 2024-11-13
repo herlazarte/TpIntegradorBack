@@ -16,11 +16,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from apps.profesional.views import HomeView
 from django.contrib.auth import views as aunth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('usuarios/', include('apps.usuarios.urls')),
-    path("login/", aunth_views.LoginView.as_view()),
+    path('clientes/', include('apps.cliente.urls')),
+    path('profesionales/', include('apps.profesional.urls')),
+    path("login/", aunth_views.LoginView.as_view(),name='login'),
     path("logout/", aunth_views.LogoutView.as_view()),
+
+    #para agregar el home al arrancar el servidor
+    path('', HomeView.as_view(), name='home'),
 ]

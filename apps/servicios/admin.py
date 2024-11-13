@@ -4,7 +4,7 @@ from apps.servicios.models import Servicio, TipoServicio, ProfesionalServicio
 # Register your models here.
 @admin.register(Servicio)
 class AdminServicio(admin.ModelAdmin):
-    list_display = ['nombre_servicio','tipo_servicio']
+    list_display = ['nombre_servicio']
 
 @admin.register(TipoServicio)
 class AdminTipoServicio(admin.ModelAdmin):

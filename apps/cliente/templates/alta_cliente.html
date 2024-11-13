@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <h2>Registrarse</h2>
+        <form method="post">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" name="nombre" id="nombre" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="apellido">Apellido</label>
+            <input type="text" name="apellido" id="apellido" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="NombreDeUsuario">Nombre de Usuario</label>
+            <input type="text" name="NombreDeUsuario" id="NombreDeUsuario" class="form-control" required>
+          </div>
+
+          <div class="form-group">
+            <label for="contra">Contraseña</label>
+            <input type="password" name="contra" id="contra" class="form-control" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="telefono">Telefono</label>
+            <input type="tel" name="telefono" id="telefono" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="calle">Calle</label>
+            <input type="text" name="calle" id="calle" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="numero">Numero</label>
+            <input type="text" name="numero" id="numero" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="piso">Piso</label>
+            <input type="text" name="piso" id="piso" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="codigo_postal">Codigo Postal</label>
+            <input type="text" name="codigo_postal" id="codigo_postal" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="localidad">Localidad</label>
+            <input type="text" name="localidad" id="localidad" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="provincia">Provincia</label>
+            <input type="text" name="provincia" id="provincia" class="form-control" required>
+          </div>
+          <input type="submit" value="Guardar" class="btn btn-primary btn-block">
+        </form>
+        {% if form.errors %}
+          <p>{{ form.errors }}</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endblock content %}

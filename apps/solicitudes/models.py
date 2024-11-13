@@ -3,10 +3,10 @@ from django.utils import timezone
 
 # Create your models here.
 class Solicitud(models.Model):
-    cliente=models.ForeignKey('usuarios.Cliente', on_delete=models.CASCADE)
+    cliente=models.ForeignKey('cliente.Cliente', on_delete=models.CASCADE)
     fecha_solicita=models.DateTimeField()
     tipo_servicio=models.ForeignKey('servicios.Servicio', on_delete=models.CASCADE)
-    profesional_servicio=models.ForeignKey('usuarios.Profesional', on_delete=models.CASCADE, default=None)
+    profesional_servicio=models.ForeignKey('profesional.Profesional', on_delete=models.CASCADE, default=None)
 
     def __str__(self) -> str:
         return f"{self.cliente}"

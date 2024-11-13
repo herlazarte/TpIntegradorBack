@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'apps.servicios',#agregre app
     'apps.solicitudes',#agregre app
-    'apps.usuarios',#agregre app
+    'apps.cliente',#agregre app
+    'apps.profesional',#agregre app
 ]
 
 MIDDLEWARE = [
@@ -57,7 +58,7 @@ ROOT_URLCONF = 'KeyServ.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': [ BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -129,6 +130,8 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-#para el login
-LOGIN_REDIRECT_URL = '/usuarios/'
+#Redirigir el login 
+LOGIN_REDIRECT_URL = '/clientes/'
+
+#Redirigir el logout a login
 LOGOUT_REDIRECT_URL = '/login/'
