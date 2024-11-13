@@ -18,5 +18,8 @@ class AltaClientesView(CreateView):
     template_name = 'alta_cliente.html'
     success_url = '/alta_cliente/'
 
+class DashboardClientesView(TemplateView):
+    template_name = 'dashboard_cliente.html'
+
 class HomeView(TemplateView):
     template_name = "base.html"
