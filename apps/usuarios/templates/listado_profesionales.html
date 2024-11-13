@@ -1,4 +1,8 @@
 {% extends 'base.html' %}
+
+{% load static %}
+[% 
+
 {% block content %}
     <h1>Listado de Profesionales</h1>
     <ul>
@@ -6,5 +10,6 @@
             <li>{{ profesional.nombre }} ({{ profesional.servicio_profesional }})</li>
         {% endfor %} 
     </ul>
+
 {% endblock content %}
     

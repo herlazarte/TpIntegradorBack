@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,11 +7,24 @@
     <title>Alta de clientes</title>
 </head>
 <body>
-    <form method="post">
+    {% extends 'base.html' %}
+
+    <!-- {No quiero incluir estos block -->
+    {% block section %} {% endblock section %}
+    {% block services %} {% endblock services %}
+    {% block benefits %} {% endblock benefits %}
+    {% block testimonials %} {% endblock testimonials %}
+    {% block contact %} {% endblock contact %}
+    {% block footer %} {% endblock footer %}
+    <!-- {No quiero incluir estos block -->
+
+   <form method="post">
+    
         {% csrf_token %} 
         {{ form.as_p }}
         <input type="submit" value="Guardar">
-    </form>
+    </form> 
+
     
 </body>
 </html>

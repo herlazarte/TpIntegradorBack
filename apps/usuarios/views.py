@@ -1,9 +1,9 @@
 
 from django.shortcuts import render
 from django.views.generic import TemplateView, CreateView
-
-from apps.usuarios.forms import ClienteForm, ProfesionalForm
 from .models import Cliente, Profesional
+from apps.usuarios.forms import ClienteForm, ProfesionalForm
+
 
 
 class ListaClientesView(TemplateView):
@@ -35,3 +35,7 @@ class ListaProfesionalesView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['profesionales'] = Profesional.objects.all()
         return context
+
+
+class HomeView(TemplateView):
+    template_name = "base.html"

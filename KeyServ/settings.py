@@ -57,7 +57,7 @@ ROOT_URLCONF = 'KeyServ.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': [ BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -129,6 +129,8 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-#para el login
+#Redirigir el login
 LOGIN_REDIRECT_URL = '/usuarios/'
+
+#Redirigir el logout a login
 LOGOUT_REDIRECT_URL = '/login/'
