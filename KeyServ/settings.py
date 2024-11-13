@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'apps.servicios',#agregre app
     'apps.solicitudes',#agregre app
-    'apps.usuarios',#agregre app
+    'apps.cliente',#agregre app
+    'apps.profesional',#agregre app
 ]
 
 MIDDLEWARE = [
