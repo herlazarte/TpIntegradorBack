@@ -20,6 +20,19 @@ class AltaClientesView(CreateView):
 
 class DashboardClientesView(TemplateView):
     template_name = 'dashboard_cliente.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        cliente = Cliente.objects.get(NombreDeUsuario=self.request.user.username)
+        context['cliente'] = cliente
+        return context
+    
+    # verifico si el usuario actual es el mismo que creo el cliente
+    # si no es asi lo redirige al login
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return super().dispatch(request, *args, **kwargs)
+        else:
+            return redirect('login')
 
 class HomeView(TemplateView):
     template_name = "base.html"
